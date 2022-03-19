@@ -189,11 +189,15 @@ body {
     background: #245;/*
     border: 2px solid hotpink;*/
     display: flex;
-
     align-items: center;
-
     border-top: 1px solid #3333;
-    
+    border-right: 1px solid #3333;
+    border-left: 1px solid #3333;  
+}
+
+.daily-data_item:last-child {
+    border-bottom: 1px solid #3333;
+    margin-bottom: 2rem;
 }
 
 .daily-main-data {/*
@@ -202,7 +206,7 @@ body {
     display: flex;
     height: 2rem;
     justify-content: space-around;
-    left: .3em;
+    padding-left: .3em;
 }
 
 .daily-secun-data {/*
@@ -215,6 +219,10 @@ body {
     margin: 0 1em;
     height: 0;
     transition: height 1s ease;
+}
+
+.day_humidity {
+    margin: 0 .5rem;
 }
 
 .change-height {
@@ -238,7 +246,7 @@ body {
     padding: 1em 0;*/
 }
 
-.day_day-nigth-weather {
+.day_minmax-weather {
     width: 7em;/*
     padding: 1em 0;*/
 }

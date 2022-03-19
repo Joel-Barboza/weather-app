@@ -93,19 +93,21 @@ function dailyData(data) {
         let nextDays = days;
         let {max, min} = data.daily[dayNum].temp;
         let {humidity, sunrise, sunset, wind_speed} = data.daily[dayNum]
+        let sr = new Date(sunrise * 1000).toLocaleTimeString("en-US", {timeStyle: "short"})
+        let ss = new Date(sunset * 1000).toLocaleTimeString("en-US", {timeStyle: "short"})
         let dailyDataItem = document.createElement("div")
         dailyDataItem.classList.add("daily-data_item")
         dailyDataItem.innerHTML = 
         `<div class="daily-main-data">
             <p class="day_name">${daysArray[days]}:</p>
-            <p class="day_day-nigth-weather">${Math.round(max)}°C / ${Math.round(min)}°C</p>
-            <button class="arrow-btn btn-hide" id="Btn${dayNum}"><i id="rotateArrowBtn${dayNum}" class="fas fa-chevron-down"></i></button>
+            <p class="day_minmax-weather">${Math.round(max)}°C / ${Math.round(min)}°C</p>
+            <button class="arrow-btn btn-hide" id="Btn${dayNum}"><i id="rotateArrowBtn${dayNum}" class="fa-solid fa-chevron-down"></i></button>
         </div>
         <div id="secunDataBtn${dayNum}" class="daily-secun-data">      
-            <p class="day_humidity">Humedad: ${humidity}</p>
-            <p class="day_humidity">Salida del sol: ${sunrise}</p>
-            <p class="day_humidity">Puesta del sol: ${sunset}</p>
-            <p class="day_humidity">Velocidad del viento: ${wind_speed}</p>
+            <p class="day_humidity">Humedad: ${humidity}%</p>
+            <p class="day_humidity">Salida del sol: ${sr}</p>
+            <p class="day_humidity">Puesta del sol: ${ss}</p>
+            <p class="day_humidity">Velocidad del viento: ${wind_speed}m/s</p>
         </div>`
         dailyDataCont.appendChild(dailyDataItem)
 
