@@ -1,8 +1,9 @@
-/*alert('Por favor active la ubicación.')*/ 
+
 
 // Call a function to requests the data from the API
 getWeatherData()
 
+// Gets data from the API
 function getWeatherData() {
 	navigator.geolocation.getCurrentPosition((success) => {
 		let {latitude, longitude} = success.coords;
@@ -27,44 +28,49 @@ function getWeatherData() {
 	})
 }
 
+// Gets location name
 function locationName(location) {
 	let {name} = location[0];
 	let place = document.getElementById('place');
 	place.innerText =  `${name}`;
 }
 
+// Displays hourly data
 function hourlyData(data) {
+    // used to show the corret hour depending on what date.getHours() value is and show the next 24 hours
     let hoursArray = 
     ["12:00 am", "1:00 am", "2:00 am", "3:00 am", "4:00 am" , "5:00 am" ,
      "6:00 am" , "7:00 am", "8:00 am", "9:00 am", "10:00 am", "11:00 am",
      "12:00 pm", "1:00 pm", "2:00 pm", "3:00 pm", "4:00 pm" , "5:00 pm" , 
      "6:00 pm" , "7:00 pm", "8:00 pm", "9:00 pm", "10:00 pm", "11:00 pm", "12:00 am"]
 	const date = new Date();
-	let hour = date.getHours()
+	let hour = date.getHours()//gets current hour
     let hourForecast;
-	let hourForecastTemp = 0;
-    let groupNum = 1;
+	let hourForecastNum = 0; // index of the array of API data used
+    let groupNum = 1; // gives a number to each data items group for a scroll efect
     let contHourlyData = document.getElementById('container_hourly-data')
-    contHourlyData.innerHTML = ""
+    contHourlyData.innerHTML = "" // prevents duplicated appends 
 
     for (let i = 0; i < 4;){
-        let dataGroup = document.createElement("div")
+        let dataGroup = document.createElement("div") // create the item groups
         dataGroup.setAttribute("id", `dataGroup${groupNum}`)
         dataGroup.classList.add("dataGroup")
         contHourlyData.appendChild(dataGroup)
 
         for (let i = 0; i < 6;){
-            hourForecast = hoursArray[hour];
-            let {temp} = data.hourly[hourForecastTemp];
-            let {icon} = data.hourly[hourForecastTemp].weather[0];
-            let selectGroup = document.getElementById(`dataGroup${groupNum}`)
+            hourForecast = hoursArray[hour]; //uses a element of the array to display an hour
+            let {temp} = data.hourly[hourForecastNum]; // gets temperature from API data
+            let {icon} = data.hourly[hourForecastNum].weather[0]; // gets a icon depending on the ->
+            // -> weather condition gotten from API data
+            let selectGroup = document.getElementById(`dataGroup${groupNum}`) // Selects the group to ->
+            // -> append the data item
             let dataSpan = document.createElement("span")
             dataSpan.classList.add("hourlyItem")
             dataSpan.innerHTML = 
             `<p class="p_hour-forecast">${hourForecast}</p>
-            <span class="container_hourly-img">
+            <div class="container_hourly-img">
                 <img class="img" src="http://openweathermap.org/img/w/${icon}.png" />
-            </span>
+            </div>
             <p>${Math.round(temp)}°C</p>`
             selectGroup.appendChild(dataSpan)
             
@@ -73,7 +79,7 @@ function hourlyData(data) {
             }
 
             hour++;  
-            hourForecastTemp++;
+            hourForecastNum++;
             i++;  
         }
         groupNum++;
