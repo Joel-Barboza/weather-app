@@ -96,7 +96,7 @@ body {
 ------------------*/
 
 .container_hourly-forecast {
-    width: 100vw;
+    width: 100%;
     max-width: 1600px;
     display: flex;
     justify-content: center;
@@ -127,6 +127,7 @@ body {
     font-size: clamp(.3rem, 5vw, 1rem);
     padding: clamp(.1rem, 1vw, .5rem);
     cursor: default;
+    user-select: none;
 }
 
 .p_hour-forecast {

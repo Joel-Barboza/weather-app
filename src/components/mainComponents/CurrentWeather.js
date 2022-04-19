@@ -1,7 +1,8 @@
 import React from 'react'
+import getWeatherData from '../ApiRequest.js'
 
 
-export default function CurrentWeather() {
+const CurrentWeather = () => {
 
 	return(
         <div className="container_current-data">
@@ -13,3 +14,5 @@ export default function CurrentWeather() {
         </div>
 		)
 }
+
+export default CurrentWeather;

@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export default function HourlyForecast() {
+const HourlyForecast = () => {
     function scrollRight () {
         let scrolling = document.getElementById('container_hourly-data')
         scrolling.scrollLeft += window.innerWidth;
@@ -20,3 +20,5 @@ export default function HourlyForecast() {
         </div>
 		)
 }
+
+export default HourlyForecast;

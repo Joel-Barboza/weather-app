@@ -5,7 +5,7 @@ import DailyForecast from './mainComponents/DailyForecast.js'
 
 
 
-export default function Main() {
+const Main = () => {
     
     return (
         <main className="container_main">
@@ -18,3 +18,5 @@ export default function Main() {
         </main>
         )
 }
+
+export default Main;

@@ -1,10 +1,7 @@
 
 
-// Call a function to requests the data from the API
-getWeatherData()
-
 // Gets data from the API
-function getWeatherData() {
+const getWeatherData = () => {
 	navigator.geolocation.getCurrentPosition((success) => {
 		let {latitude, longitude} = success.coords;
 
@@ -29,14 +26,14 @@ function getWeatherData() {
 }
 
 // Gets location name
-function locationName(location) {
+const locationName = (location) => {
 	let {name} = location[0];
 	let place = document.getElementById('place');
 	place.innerText =  `${name}`;
 }
 
 // Displays hourly data
-function hourlyData(data) {
+const hourlyData = (data) => {
     // used to show the corret hour depending on what date.getHours() value is and show the next 24 hours
     let hoursArray = 
     ["12:00 am", "1:00 am", "2:00 am", "3:00 am", "4:00 am" , "5:00 am" ,
@@ -87,7 +84,7 @@ function hourlyData(data) {
     }
 }
 
-function dailyData(data) {
+const dailyData = (data) => {
     let daysArray= ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]
     const date = new Date();
     let days = date.getDay()
@@ -131,7 +128,7 @@ function dailyData(data) {
     };    
 }
 
-function currentData(data) {
+const currentData = (data) => {
 	let {/*humidity, pressure, sunrise, sunset, windspeed,*/ temp} = data.current;
 	let {description} = data.current.weather[0];
 	let {day, night} = data.daily[0].feels_like;
@@ -146,11 +143,16 @@ function currentData(data) {
 
 }
 
-function secunData(dayNum) { 
+const secunData = (dayNum) => { 
     const hiddenData = document.getElementById(`secunData${dayNum}`);
     const btnShowData = document.getElementById(`rotateArrow${dayNum}`);
     hiddenData.classList.toggle("change-height")
     btnShowData.classList.toggle("rotate-arrow")   
 }
+
+
+
+// Call a function to requests the data from the API
+getWeatherData()
 
 

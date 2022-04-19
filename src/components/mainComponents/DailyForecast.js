@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export default function DailyForecast() {
+const DailyForecast = () => {
 
 	return(
 		<div id="container_daily-data" className="container_daily-data">
@@ -9,3 +9,5 @@ export default function DailyForecast() {
         </div>
 		)
 }
+
+export default DailyForecast;
