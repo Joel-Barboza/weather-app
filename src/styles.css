@@ -153,25 +153,6 @@ body {
     5.DAILY DATA
 ------------------*/
 
-#pepe {
-    display: flex;
-    flex-direction: column;
-}
-
-#pepe2 {
-    display: flex;
-    list-style: none;
-
-}
-
-#pepe2 li {
-    margin: .5rem;
-}
-
-.pepe33 {
-    background: red;
-}
-
 .container_daily-data {
     display: flex;
     flex-direction: column;
