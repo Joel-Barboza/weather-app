@@ -1,7 +1,7 @@
 import React from 'react'
-import CurrentWeather from './mainComponents/CurrentWeather.js'
-import HourlyForecast from './mainComponents/HourlyForecast.js'
-import DailyForecast from './mainComponents/DailyForecast.js'
+import CurrentWeather from './mainComponents/CurrentWeather.jsx'
+import HourlyForecast from './mainComponents/HourlyForecast.jsx'
+import DailyForecast from './mainComponents/DailyForecast.jsx'
 
 
 

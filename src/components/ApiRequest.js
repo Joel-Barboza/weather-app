@@ -11,7 +11,7 @@ const getWeatherData = () => {
 			exclude=minutely&
 			units=metric&
 			lang=es&
-			appid=${process.env.REACT_APP_API_KEY}`).then(res => res.json()).then(data => {
+			appid=${import.meta.env.VITE_API_KEY}`).then(res => res.json()).then(data => {
 			currentData(data);
 			hourlyData(data)
             dailyData(data)
@@ -19,7 +19,7 @@ const getWeatherData = () => {
 		})
 		fetch(`https://api.openweathermap.org/geo/1.0/reverse?
 			lat=${latitude}&lon=${longitude}&lang=es&
-			appid=${process.env.REACT_APP_API_KEY}`).then(res => res.json()).then(location => {
+			appid=${import.meta.env.VITE_API_KEY}`).then(res => res.json()).then(location => {
 			locationName(location);
 		})
 	})
@@ -82,6 +82,10 @@ const hourlyData = (data) => {
         groupNum++;
         i++; 
     }
+
+    // Removes the preloader before hourly data was loaded
+    let preloader = document.getElementById("preloader")
+    preloader.style.display = "none"
 }
 
 const dailyData = (data) => {
@@ -147,7 +151,7 @@ const secunData = (dayNum) => {
     const hiddenData = document.getElementById(`secunData${dayNum}`);
     const btnShowData = document.getElementById(`rotateArrow${dayNum}`);
     hiddenData.classList.toggle("change-height")
-    btnShowData.classList.toggle("rotate-arrow")   
+    btnShowData.classList.toggle("rotate-arrow")  
 }
 
 
@@ -155,4 +159,4 @@ const secunData = (dayNum) => {
 // Call a function to requests the data from the API
 getWeatherData()
 
-
+export default getWeatherData;
