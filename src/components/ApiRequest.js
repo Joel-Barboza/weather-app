@@ -52,7 +52,7 @@ Luego recargue la página.`)
 const reload = () => {
     preloader.style.backgroundImage = "none"; // Removes preloader animation
     preloader.classList.toggle("change-pointer")
-    preloader.innerHTML = `<img class="reload" src="./reload.svg" alt="reload"/>
+    preloader.innerHTML = `<img class="reload" src="https://github.com/Joel-Barboza/weather-app/blob/a5f118cdd059b36897456299b91b791fd43777bd/reload.svg" alt="reload"/>
     <p>Toque para recargar</p>`
     preloader.addEventListener("click", (e) => {
         window.location.reload()
