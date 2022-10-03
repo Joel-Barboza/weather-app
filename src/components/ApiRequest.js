@@ -24,19 +24,38 @@ const getWeatherData = () => {
 		})
 	}, (error) => {
         switch(error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("User denied the request for Geolocation.")
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Location information is unavailable.")
-                    break;
-                case error.TIMEOUT:
-                    alert("The request to get user location timed out.")
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("An unknown error occurred.")
-                    break;
+            case error.PERMISSION_DENIED:
+                alert(`Tenemos un problema al cargar la página.\n
+Algunas posibles causas son:
+        -Permiso de geolocation denegado por el usuario.
+        -Ubicación desactivada.\n
+Por favor, habilite el permiso o active la ubicacion
+Luego recargue la página.`)
+                reload()
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert("Información de localización no disponible.")
+                reload()
+                break;
+            case error.TIMEOUT:
+                alert("Tiempo agotado para solicitud de localización de usuario.")
+                reload()
+                break;
+            case error.UNKNOWN_ERROR:
+                alert("Ocurrió un error desconocido.")
+                reload()
+                break;
         }
+    })
+}
+
+const reload = () => {
+    preloader.style.backgroundImage = "none"; // Removes preloader animation
+    preloader.classList.toggle("change-pointer")
+    preloader.innerHTML = `<img class="reload" src="./src/reload.svg" />
+    <p>Toque para recargar</p>`
+    preloader.addEventListener("click", (e) => {
+        location.reload()
     })
 }
 
@@ -123,7 +142,9 @@ const dailyData = (data) => {
         `<div class="daily-main-data">
             <p class="day_name">${daysArray[days]}:</p>
             <p class="day_minmax-weather">${Math.round(max)}°C / ${Math.round(min)}°C</p>
-            <button class="arrow-btn btn-hide" id="Btn${dayNum}"><i id="rotateArrowBtn${dayNum}" class="fa-solid fa-chevron-down"></i></button>
+            <button class="arrow-btn btn-hide" id="Btn${dayNum}">
+                <i id="rotateArrowBtn${dayNum}" class="fa-solid fa-chevron-down"></i>
+            </button>
         </div>
         <div id="secunDataBtn${dayNum}" class="daily-secun-data">      
             <p class="day_humidity">Humedad: ${humidity}%</p>
