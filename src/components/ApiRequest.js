@@ -52,10 +52,10 @@ Luego recargue la página.`)
 const reload = () => {
     preloader.style.backgroundImage = "none"; // Removes preloader animation
     preloader.classList.toggle("change-pointer")
-    preloader.innerHTML = `<img class="reload" src="./src/reload.svg" />
+    preloader.innerHTML = `<img class="reload" src="./src/reload.svg" alt="reload"/>
     <p>Toque para recargar</p>`
     preloader.addEventListener("click", (e) => {
-        location.reload()
+        window.location.reload()
     })
 }
 
