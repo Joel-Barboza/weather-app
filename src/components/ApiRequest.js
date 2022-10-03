@@ -29,7 +29,7 @@ const getWeatherData = () => {
 const locationName = (location) => {
 	let {name} = location[0];
 	let place = document.getElementById('place');
-	place.innerText =  `${name}`;
+	place.innerHTML =  `<i class="fa-solid fa-location-dot"></i> ${name}`;
 }
 
 // Displays hourly data
@@ -66,7 +66,7 @@ const hourlyData = (data) => {
             dataSpan.innerHTML = 
             `<p class="p_hour-forecast">${hourForecast}</p>
             <div class="container_hourly-img">
-                <img class="img" src="http://openweathermap.org/img/w/${icon}.png" />
+                <img class="img" src="http://openweathermap.org/img/w/${icon}.png" alt="${icon}.png"/>
             </div>
             <p>${Math.round(temp)}°C</p>`
             selectGroup.appendChild(dataSpan)
